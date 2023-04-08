@@ -32,7 +32,6 @@ const TodoItem = ({ todo }: Props) => {
 			},
 		});
 	};
-
 	return (
 		<Group align="center">
 			<Text
