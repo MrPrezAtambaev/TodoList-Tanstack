@@ -6,7 +6,7 @@ export type FetchTodoArg = {
 	_sort?: keyof Todo;
 	_order?: "asc" | "desc";
 	q?: string;
-	_page?: number;
+	_page?: any;
 	_limit?: number;
 };
 

@@ -14,11 +14,11 @@ import {
 } from "@mantine/core";
 import { useState } from "react";
 import { IconMoonStars, IconSearch, IconSun } from "@tabler/icons-react";
-import { MantineLogo } from "@mantine/ds";
 import TodoItem from "@/components/TodoItem";
 import { openContextModal } from "@mantine/modals";
 import TodoForm from "@/components/TodoForm";
 import { useCreateTodo } from "@/services/createTodo";
+import Navbar from "@/components/Header";
 
 export default function Home() {
 	const [searchText, setSearchText] = useState("");
@@ -34,14 +34,6 @@ export default function Home() {
 
 	const [createTodo] = useCreateTodo();
 
-	const openCreateTodoModal = () => {
-		openContextModal({
-			title: "Создать задачу",
-			modal: "createTodo",
-			innerProps: {},
-		});
-	};
-
 	//! Dark Theme
 
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -50,20 +42,7 @@ export default function Home() {
 	return (
 		<>
 			<Container>
-				<Header height={58} mb={120}>
-					<Container>
-						<Group py="sm" position="apart">
-							<MantineLogo size={34} />
-							<TextInput
-								icon={<IconSearch />}
-								placeholder="..."
-								value={searchText}
-								onChange={(e) => setSearchText(e.currentTarget.value)}
-							/>
-							<Button onClick={openCreateTodoModal}>Создать</Button>
-						</Group>
-					</Container>
-				</Header>
+				<Navbar />
 				<ActionIcon
 					variant="outline"
 					color={dark ? "yellow" : "blue"}

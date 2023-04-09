@@ -2,7 +2,6 @@ import { useFetchTodoById } from "@/services/fetchTodoById";
 import { Title } from "@mantine/core";
 import { ContextModalProps } from "@mantine/modals";
 import TodoForm, { TodoFormValues } from "../TodoForm";
-import { useCreateTodo } from "@/services/createTodo";
 import { useUpdateTodo } from "@/services/updateTodo";
 
 type Props = ContextModalProps<{

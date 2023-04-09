@@ -56,7 +56,6 @@ export default function App(props: AppProps) {
 						</ModalsProvider>
 					</MantineProvider>
 				</ColorSchemeProvider>
-
 				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
 		</>
