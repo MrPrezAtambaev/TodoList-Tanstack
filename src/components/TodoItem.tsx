@@ -34,6 +34,7 @@ const TodoItem = ({ todo }: Props) => {
 	};
 	return (
 		<Group align="center">
+			<Text>{todo.id}</Text>
 			<Text
 				style={{
 					textDecoration: todo.completed ? "line-through" : "auto",

@@ -6,6 +6,8 @@ export type FetchTodoArg = {
 	_sort?: keyof Todo;
 	_order?: "asc" | "desc";
 	q?: string;
+	_page?: number;
+	_limit?: number;
 };
 
 const fetchTodo = async (arg?: FetchTodoArg) => {

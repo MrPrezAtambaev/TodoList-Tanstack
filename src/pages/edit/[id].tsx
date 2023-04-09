@@ -86,11 +86,3 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 };
-
-// createTodo({
-// 	data: {
-// 		id: Date.now().toString(),
-// 		title: "Test " + Date.now(),
-// 		completed: false,
-// 	},
-// });
