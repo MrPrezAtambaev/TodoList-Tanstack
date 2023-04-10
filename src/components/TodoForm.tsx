@@ -3,6 +3,8 @@ import { Checkbox, FocusTrap, Stack, TextInput } from "@mantine/core";
 import { Button } from "@mantine/core";
 import z from "zod";
 import { useForm, zodResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
+import { IconCheck, IconX } from "@tabler/icons-react";
 
 type Props = {
 	onSubmit(values: TodoFormValues): void;
@@ -43,7 +45,47 @@ const TodoForm = ({ onSubmit, defaultValues = {} }: Props) => {
 						label="Статус"
 						{...form.getInputProps("completed", { type: "checkbox" })}
 					/>
-					<Button color="violet" type="submit">
+					<Button
+						type="submit"
+						onClick={() => {
+							notifications.show({
+								title: "Вы успешно создали или сохранили задание",
+								message: "Я незнаю что еще тут писать",
+								styles: (theme) => ({
+									root: {
+										backgroundColor: theme.colors.violet[6],
+										borderColor: theme.colors.green[6],
+
+										"&::before": { backgroundColor: theme.white },
+										"::selection": {
+											backgroundColor: theme.colors.green,
+											color: theme.colors.violet,
+										},
+									},
+
+									title: {
+										color: theme.white,
+										"::selection": {
+											backgroundColor: theme.colors.green,
+											color: theme.colors.white,
+										},
+									},
+									description: {
+										color: theme.white,
+										"::selection": {
+											backgroundColor: theme.colors.green,
+											color: theme.colors.white,
+										},
+									},
+									closeButton: {
+										color: theme.white,
+										"&:hover": { backgroundColor: theme.colors.red[7] },
+									},
+								}),
+								icon: <IconCheck />,
+							});
+						}}
+					>
 						Сохранить
 					</Button>
 				</Stack>

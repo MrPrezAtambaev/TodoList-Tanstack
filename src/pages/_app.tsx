@@ -11,6 +11,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ModalsProvider } from "@mantine/modals";
 import { modals } from "@/components/modals";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
+import { SessionProvider } from "next-auth/react";
+import { Notifications } from "@mantine/notifications";
 
 declare module "@mantine/modals" {
 	export interface MantineModalsOverride {
@@ -19,7 +23,10 @@ declare module "@mantine/modals" {
 }
 
 export default function App(props: AppProps) {
-	const { Component, pageProps } = props;
+	const {
+		Component,
+		pageProps: { session, ...pageProps },
+	} = props;
 
 	const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
 	const toggleColorScheme = (value?: ColorScheme) =>
@@ -38,26 +45,31 @@ export default function App(props: AppProps) {
 					type="image/x-icon"
 				/>
 			</Head>
-
-			<QueryClientProvider client={queryClient}>
-				<ColorSchemeProvider
-					colorScheme={colorScheme}
-					toggleColorScheme={toggleColorScheme}
-				>
-					<MantineProvider
-						withGlobalStyles
-						withNormalizeCSS
-						theme={{
-							colorScheme,
-						}}
+			<Provider store={store}>
+				<QueryClientProvider client={queryClient}>
+					<ColorSchemeProvider
+						colorScheme={colorScheme}
+						toggleColorScheme={toggleColorScheme}
 					>
-						<ModalsProvider modals={modals}>
-							<Component {...pageProps} />
-						</ModalsProvider>
-					</MantineProvider>
-				</ColorSchemeProvider>
-				<ReactQueryDevtools initialIsOpen={false} />
-			</QueryClientProvider>
+						<MantineProvider
+							withGlobalStyles
+							withNormalizeCSS
+							theme={{
+								primaryColor: "violet",
+								colorScheme,
+							}}
+						>
+							<ModalsProvider modals={modals}>
+								<SessionProvider session={session}>
+									<Notifications />
+									<Component {...pageProps} />
+								</SessionProvider>
+							</ModalsProvider>
+						</MantineProvider>
+					</ColorSchemeProvider>
+					<ReactQueryDevtools initialIsOpen={false} />
+				</QueryClientProvider>
+			</Provider>
 		</>
 	);
 }

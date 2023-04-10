@@ -1,12 +1,20 @@
-import { Button, Container, Group, Header, TextInput } from "@mantine/core";
+import {
+	ActionIcon,
+	Button,
+	Container,
+	Group,
+	Header,
+	TextInput,
+	useMantineColorScheme,
+} from "@mantine/core";
 import { MantineLogo } from "@mantine/ds";
 import { openContextModal } from "@mantine/modals";
-import { IconSearch } from "@tabler/icons-react";
 import React, { useState } from "react";
+import SearchInput from "./SearchInput";
+import { IconMoonStars, IconSun } from "@tabler/icons-react";
+import Login from "./Login";
 
 const Navbar = () => {
-	const [searchText, setSearchText] = useState("");
-
 	const openCreateTodoModal = () => {
 		openContextModal({
 			title: "Создать задачу",
@@ -15,18 +23,32 @@ const Navbar = () => {
 		});
 	};
 
+	// !
+	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+	const dark = colorScheme === "dark";
 	return (
 		<Header height={58} mb={120}>
 			<Container>
 				<Group py="sm" position="apart">
-					<MantineLogo size={34} />
-					<TextInput
-						icon={<IconSearch />}
-						placeholder="..."
-						value={searchText}
-						onChange={(e) => setSearchText(e.currentTarget.value)}
-					/>
-					<Button onClick={openCreateTodoModal}>Создать</Button>
+					<MantineLogo size={34} style={{ cursor: "pointer" }} />
+					<SearchInput />
+					<Button
+						// sx={(theme) => ({
+						// 	background: theme.colors.red[9],
+						// })}
+						onClick={openCreateTodoModal}
+					>
+						Создать
+					</Button>
+					<Login />
+					<ActionIcon
+						variant="outline"
+						color={dark ? "yellow" : "violet"}
+						onClick={() => toggleColorScheme()}
+						title="Toggle color scheme"
+					>
+						{dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+					</ActionIcon>
 				</Group>
 			</Container>
 		</Header>
