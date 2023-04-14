@@ -11,7 +11,7 @@ import { MantineLogo } from "@mantine/ds";
 import { openContextModal } from "@mantine/modals";
 import React, { useState } from "react";
 import SearchInput from "./SearchInput";
-import { IconMoonStars, IconSun } from "@tabler/icons-react";
+import { IconBrandApple, IconMoonStars, IconSun } from "@tabler/icons-react";
 import Login from "./Login";
 
 const Navbar = () => {
@@ -30,13 +30,14 @@ const Navbar = () => {
 		<Header height={58} mb={120}>
 			<Container>
 				<Group py="sm" position="apart">
-					<MantineLogo size={34} style={{ cursor: "pointer" }} />
+					<IconBrandApple size={44} style={{ cursor: "pointer" }} />
 					<SearchInput />
 					<Button
 						// sx={(theme) => ({
 						// 	background: theme.colors.red[9],
 						// })}
 						onClick={openCreateTodoModal}
+						mb={20}
 					>
 						Создать
 					</Button>

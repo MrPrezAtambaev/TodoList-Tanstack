@@ -29,7 +29,6 @@ const fetchTodo = async (arg?: FetchTodoArg) => {
 	return { data: todosWithAuthor, total };
 };
 
-// Функция для получения списка todos
 export const useFetchTodo = (arg?: FetchTodoArg) => {
 	const query = useQuery({
 		queryFn: () => fetchTodo(arg),

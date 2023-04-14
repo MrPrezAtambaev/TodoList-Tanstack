@@ -1,4 +1,11 @@
-import { Group, List, Pagination, Skeleton, Stack } from "@mantine/core";
+import {
+	Group,
+	List,
+	Loader,
+	Pagination,
+	Skeleton,
+	Stack,
+} from "@mantine/core";
 import React from "react";
 import TodoItem from "./TodoItem";
 import { useFetchTodo } from "@/services/fetchTodo";
@@ -16,7 +23,6 @@ const TodoList = () => {
 	const [todos, { isLoading }] = useFetchTodo(todoFilters);
 
 	if (isLoading) {
-		// Если данные загружаются, отображаем заглушки
 		return (
 			<>
 				<Skeleton height={50} circle mb="xl" />

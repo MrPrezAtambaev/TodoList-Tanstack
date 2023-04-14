@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { IconLogin, IconLogout } from "@tabler/icons-react";
 import { Avatar, Group, Image } from "@mantine/core";

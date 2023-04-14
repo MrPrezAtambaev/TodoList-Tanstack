@@ -3,16 +3,15 @@ import { Todo } from "@/utils/types/todo";
 import { baseAxios } from "@/utils/baseAxios";
 
 type UpdateTodoArg = {
-	id: string; // assuming id is the unique identifier for a todo
-	data: Partial<Omit<Todo, "id">>; // assuming Todo is the type for your todo data
+	id: string;
+	data: Partial<Omit<Todo, "id">>;
 };
 
 const updateTodo = async (arg: UpdateTodoArg) => {
-	const { data } = await baseAxios.patch(`/todos/${arg.id}`, arg.data); // assuming you have an endpoint like /todos/:id to update a specific todo
+	const { data } = await baseAxios.patch(`/todos/${arg.id}`, arg.data);
 	return data;
 };
 
-// Функция для обновления todo
 export const useUpdateTodo = () => {
 	const queryClient = useQueryClient();
 

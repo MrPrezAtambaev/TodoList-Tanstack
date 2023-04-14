@@ -1,5 +1,5 @@
 import { useFetchTodoById } from "@/services/fetchTodoById";
-import { Title } from "@mantine/core";
+import { Skeleton, Title } from "@mantine/core";
 import { ContextModalProps } from "@mantine/modals";
 import TodoForm, { TodoFormValues } from "../TodoForm";
 import { useUpdateTodo } from "@/services/updateTodo";
@@ -20,7 +20,8 @@ const UpdateTodoModal = ({ context, id, innerProps }: Props) => {
 		context.closeModal(id);
 	};
 
-	if (isLoading) return <Title color="red">Loading...</Title>;
+	if (isLoading)
+		return <Skeleton height={15} mt={6} width="100%" radius="xl" />;
 	if (isError) return <Title color="red">Error!!</Title>;
 	if (!todo) return <Title color="red">Not found!!</Title>;
 

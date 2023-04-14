@@ -1,23 +1,10 @@
 import { useDeleteTodo } from "@/services/deleteTodo";
 import { useUpdateTodo } from "@/services/updateTodo";
 import { Todo } from "@/utils/types/todo";
-import {
-	ActionIcon,
-	Anchor,
-	Avatar,
-	Group,
-	Text,
-	Tooltip,
-} from "@mantine/core";
+import { ActionIcon, Avatar, Group, Text, Tooltip } from "@mantine/core";
 import { openContextModal } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
-import {
-	IconPencil,
-	IconTrash,
-	IconUser,
-	IconWoman,
-} from "@tabler/icons-react";
-import Image from "next/image";
+import { IconPencil, IconTrash, IconWoman } from "@tabler/icons-react";
 
 type Props = {
 	todo: Todo;

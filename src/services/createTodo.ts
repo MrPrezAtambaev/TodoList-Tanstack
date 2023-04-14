@@ -1,4 +1,4 @@
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Todo } from "@/utils/types/todo";
 import { baseAxios } from "@/utils/baseAxios";

@@ -57,6 +57,7 @@ export default function App(props: AppProps) {
 							theme={{
 								primaryColor: "violet",
 								colorScheme,
+								loader: "bars",
 							}}
 						>
 							<ModalsProvider modals={modals}>
